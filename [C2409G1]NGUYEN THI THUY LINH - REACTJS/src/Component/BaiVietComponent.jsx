@@ -21,7 +21,7 @@ function BaiVietComponent () {
         <>
         <Container className="mt-4">
             <h2>
-                <Badge bg="secondary">Tin Mới</Badge>
+                <Badge bg="secondary">Tin nổi bật</Badge>
             </h2>
             <Row >
                 <Col md={6}>
