@@ -1,5 +1,6 @@
 import { Card, Col } from "react-bootstrap"
 import PropTypes from "prop-types"
+import { useNavigate } from "react-router";
 
 ProductComponent.propTypes = {
     value: PropTypes.object,
@@ -7,10 +8,13 @@ ProductComponent.propTypes = {
 
 function ProductComponent ({value}) {
 
+    const navigate = useNavigate();
+
+
     return (
         <>
      
-            <Col className='mt-4'>
+            <Col className='mt-4' onClick={() => navigate('/product-detail/${id}')}>
                 <Card style={{ width: '14rem' }}>
                     <Card.Img 
                     variant="top" src={value.image} />

@@ -1,13 +1,19 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css'
 import { CgShoppingCart } from 'react-icons/cg';
-import { Link } from 'react-router';
+import { TbSearch } from 'react-icons/tb';
+import { useState } from 'react';
+import Search from './Search/Search';
+import Cart from '../Cart/Cart';
 
 function Header() {
+
+
+    const [showSearch, setShowSearch] = useState(false)
+    const [showCart, setShowCart] = useState(false)
+
     return (
         <Navbar>
             <Container >
@@ -18,37 +24,35 @@ function Header() {
                         style={{ maxHeight: '100px'}}
                         navbarScroll
                     >
-                        <Nav.Link  href="#action1">
-                            <Link style={{textDecoration: 'none', color: 'grey'}} to="/home">
+                        <Nav.Link href="/home">
                             Home
-                            </Link>
                         </Nav.Link>
-                        <Nav.Link  href="#action2">
-                            <Link style={{textDecoration: 'none', color: 'grey'}} to="/mobile">
+                        <Nav.Link  href="/mobile">
                             Di động
-                            </Link>
                         </Nav.Link>
-                        <Nav.Link  href="#">Nhà thông minh</Nav.Link>
+                        <Nav.Link  href="/tivi">
+                            Nhà thông minh
+                        </Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
-                        type="search"
-                        placeholder="tìm kiếm"
-                        className="me-2"
-                        aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                       
-                    </Form>
+                    
                     <span style={{
-                        fontSize: '35px',
-                         marginLeft: '50px',
+                        fontSize: '25px',
+                         display:'flex',
+                         color: 'grey'}}>
+                    <TbSearch onClick={() => setShowSearch(true)}/>
+                    </span>
+
+                    <span style={{
+                        fontSize: '25px',
+                         marginLeft: '30px',
                          display:'flex',
                          color: 'grey'}}>                                           
-                            <CgShoppingCart />
+                    <CgShoppingCart onClick={() => setShowCart(true)} />
                     </span>
                 </Navbar.Collapse>
             </Container>
+            {showSearch && <Search setShowSearch={setShowSearch} />}
+            {showCart && <Cart setShowCart={setShowCart}/>}
         </Navbar>
     )
 }

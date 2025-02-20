@@ -5,14 +5,18 @@ import HomePage from './Pages/HomePage';
 import ProductDetail from './Component/ProductDetail/ProductDetail';
 import Footer from './Component/Footer/Footer';
 import Didong from './Pages/Didong';
+import Tivi from './Pages/Tivi';
+import SliderbarComponent from './Component/SliderbarComponent';
 function App() {
 
   return (
    <BrowserRouter>
       <Header />
+      <SliderbarComponent />
       <Routes>
           <Route path='/home' element={<HomePage />} />
           <Route path='/mobile' element={<Didong />} />
+          <Route path='/tivi' element={<Tivi />} />
           <Route path='/product-detail/:id' element={<ProductDetail />} />
 
       </Routes>

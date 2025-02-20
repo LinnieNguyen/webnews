@@ -2,8 +2,17 @@ import "./Cart.scss";
 import {MdClose} from "react-icons/md";
 import {BsCartX} from "react-icons/bs";
 import CartItem from "./CartItem/CartItem";
+import PropTypes from "prop-types"
 
-export default function Cart () {
+Cart.propTypes = {
+    setShowCart: PropTypes.func.isRequired,
+};
+Cart.defaultProp = {
+    setShowCart: () => {}
+}
+
+
+export default function Cart ({setShowCart}) {
     return (
         <div className="cart-panel">
             <div className="opac-layer"></div>
@@ -11,7 +20,7 @@ export default function Cart () {
                 <div className="cart-header">
                     <span className="heading">Shopping Cart</span>
                     <span className="close-btn">
-                        <MdClose className="close-btn" />
+                        <MdClose className="close-btn" onClick={() => setShowCart(false)} />
                         <span className="text">close</span>
                     </span>
                 </div>

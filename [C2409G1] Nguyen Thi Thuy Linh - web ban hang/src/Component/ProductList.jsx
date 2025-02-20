@@ -13,6 +13,7 @@ ProductList.propTypes = {
 
 
 function ProductList ({productsProp}) {
+
     return (
         <>
             <Container style={{
@@ -39,7 +40,7 @@ function ProductList ({productsProp}) {
                     {
                         productsProp.slice(1,5).map((product, key) => {
                             return (
-                                <ProductComponent value={product} key={key} />
+                                <ProductComponent value={product} key={key} id={product.id}/>
                             )
                         })
                     }
