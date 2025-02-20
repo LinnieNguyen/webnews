@@ -1,13 +1,25 @@
 import {FaCartPlus, FaFacebookF, FaInstagram, FaLinkedinIn, FaPinterest, FaTwitter} from "react-icons/fa";
 import './ProductDetail.scss'
+import {  useNavigate, useParams } from "react-router";
 import { products } from "../../data/products";
 export default function ProductDetail () {
+    const {id} = useParams();
+    const navigate = useNavigate()
+    const product = products.find((item) => item.id === parseInt(id));
+
+    if(!product){
+        return(
+            <div>
+                <button onClick={() => navigate("/")}>Back to Home</button>
+            </div>
+
+        )
+    }
     return (
         <div className="single-product-main-content">
             <div className="layout">
                 <div className="single-product-page">
-                    {products.map((product)=>(
-                        <div key={product.id} >
+                 
                             <div className="left">
                             <img src={product.image} />
                         </div>
@@ -46,8 +58,7 @@ export default function ProductDetail () {
                                 </span>
                             </div>
                         </div>
-                    </div>
-                    ))}
+                  
                     
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Card, Col, Row } from "react-bootstrap"
 import PropTypes from "prop-types"
+import { useNavigate } from "react-router";
 
 
 FeatureProductCoponent.propTypes = {
@@ -8,6 +9,12 @@ FeatureProductCoponent.propTypes = {
 };
 
 function FeatureProductCoponent ({value, addToCart}) {
+    const navigate = useNavigate()
+    const handleProductClick = (id) => {
+        navigate(`/product-detail/${id}`)
+    }
+
+
     return(
         <>
             <Row style={{
@@ -20,7 +27,7 @@ function FeatureProductCoponent ({value, addToCart}) {
                     <img style={{width: '450px'}} src={value.image} alt="" />
                 </Col>
                 <Col>
-                <Card.Body>
+                <Card.Body onClick={() => handleProductClick(value.id) }>
                     <Card.Img variant="top" src={value.imagelogo} />
                     
                     <h2 style={{textAlign: 'center', marginTop: '30px'}}>Từ {value.price}</h2>
